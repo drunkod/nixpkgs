@@ -11177,6 +11177,11 @@ with pkgs;
 
   chromium = callPackage ../applications/networking/browsers/chromium (config.chromium or { });
 
+  sashai = callPackage ../applications/networking/browsers/sashai {
+    inherit (darwin) apple_sdk;
+    stdenv = if stdenv.isDarwin then stdenv else llvmPackages.stdenv;
+  };
+
   chuck = callPackage ../applications/audio/chuck {
     inherit (darwin) DarwinTools;
   };
