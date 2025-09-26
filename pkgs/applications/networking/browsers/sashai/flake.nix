@@ -12,8 +12,9 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      packages.${system}.default = pkgs.callPackage ./default.nix { };
-      # you can explicitly name it too:
-      packages.${system}.sashai-browser-1 = pkgs.callPackage ./default.nix { };
+      packages.${system} = {
+        default = pkgs.callPackage ./default.nix { };
+        sashai-browser-1 = pkgs.callPackage ./default.nix { };
+      };
     };
 }

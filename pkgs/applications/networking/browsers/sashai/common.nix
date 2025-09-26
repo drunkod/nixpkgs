@@ -556,16 +556,8 @@ let
     ];
 
     postPatch = ''
-      ${base.postPatch or ""}
-
-      # Add SashAI patches here
-      echo "Applying SashAI customizations..."
-
       # If you have patch files:
-      # patch -p1 < ${./sashai-patches/some-patch.patch}
-
-      # Or if you need to run the SashAI build script:
-      # We'll handle this in the build phase
+      patch -p1 < ${./sashai-patches/branding.patch}
     '' +
       # TODO: reuse mkGnFlags for this
       # TODO: reflow
